@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>리셀마켓</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f5f5f5;
+      color: #222;
+    }
+
+    header {
+      background: #111;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+
+    h1 {
+      margin: 0;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 30px auto;
+      padding: 20px;
+    }
+
+    .search {
+      width: 100%;
+      padding: 15px;
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      margin-bottom: 20px;
+      font-size: 16px;
+    }
+
+    .products {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+    }
+
+    .product {
+      background: white;
+      padding: 20px;
+      border-radius: 15px;
+      box-shadow: 0 3px 10px #ddd;
+    }
+
+    .product h2 {
+      margin-top: 0;
+    }
+
+    .price {
+      font-size: 20px;
+      font-weight: bold;
+    }
+
+    button {
+      width: 100%;
+      padding: 12px;
+      margin-top: 10px;
+      border: 0;
+      border-radius: 8px;
+      background: #111;
+      color: white;
+      font-size: 15px;
+    }
+
+    button:hover {
+      background: #333;
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <h1>🛒 리셀마켓</h1>
+    <p>원하는 상품을 찾아보세요</p>
+  </header>
+
+  <div class="container">
+
+    <input
+      class="search"
+      id="search"
+      type="text"
+      placeholder="상품 검색..."
+    >
+
+    <div class="products" id="products">
+
+      <div class="product">
+        <h2>나이키 운동화</h2>
+        <p>새 상품급 운동화</p>
+        <p class="price">120,000원</p>
+        <button onclick="buy('나이키 운동화')">구매하기</button>
+      </div>
+
+      <div class="product">
+        <h2>아디다스 신발</h2>
+        <p>상태 좋은 중고 상품</p>
+        <p class="price">80,000원</p>
+        <button onclick="buy('아디다스 신발')">구매하기</button>
+      </div>
+
+      <div class="product">
+        <h2>후드티</h2>
+        <p>인기 브랜드 후드티</p>
+        <p class="price">50,000원</p>
+        <button onclick="buy('후드티')">구매하기</button>
+      </div>
+
+    </div>
+  </div>
+
+  <script>
+    function buy(product) {
+      alert(product + "을(를) 선택했습니다!");
+    }
+
+    document.getElementById("search").addEventListener("input", function() {
+      const keyword = this.value.toLowerCase();
+      const products = document.querySelectorAll(".product");
+
+      products.forEach(function(product) {
+        product.style.display =
+          product.innerText.toLowerCase().includes(keyword)
+            ? "block"
+            : "none";
+      });
+    });
+  </script>
+
+</body>
+</html>
